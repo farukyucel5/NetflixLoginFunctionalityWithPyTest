@@ -16,10 +16,13 @@ class LoginPage(PageBase):
     loginBtn = (By.XPATH, "//button[text()='Oturum Aç']")
 
     def click_sign_in_btn(self):
-        self.wait_element_visibility(self.cookies)
-        self.driver.find_element(*self.cookies).click()
-        self.wait_element_visibility(self.signInBtn)
-        self.driver.find_element(*self.signInBtn).click()
+        try:
+            self.driver.find_element(*self.cookies).click()
+            self.wait_element_visibility(self.signInBtn)
+            self.driver.find_element(*self.signInBtn).click()
+        except:
+            self.wait_element_visibility(self.signInBtn)
+            self.driver.find_element(*self.signInBtn).click()
 
     def enter_username(self, username):
         self.driver.find_element(*self.usernameBox).send_keys(username)
