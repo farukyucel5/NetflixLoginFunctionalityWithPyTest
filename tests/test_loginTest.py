@@ -12,7 +12,7 @@ class TestLoginFunctionality(unittest.TestCase):
 
     @data(("ab", "abc"),("aws","qwe"),("asd", "asd"))
     @unpack
-    def test_logintheSystem(self,username,password):
+    def test_login(self,username,password):
         login_page = LoginPage(self.driver)
         self.driver.get("https://www.netflix.com/tr-en/")
         login_page.click_sign_in_btn()
