@@ -8,7 +8,7 @@ import pytest
 @pytest.fixture(scope="class")
 def setup(request):
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    driver.get("https://www.netflix.com/tr-en/")
+    driver.get("https://www.netflix.com/tr/")
     driver.maximize_window()
     request.cls.driver = driver
     yield

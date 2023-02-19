@@ -9,13 +9,14 @@ class LoginPage(PageBase):
         super().__init__(driver)
         self.driver = driver
 
-    signInBtn = (By.XPATH, "//a[text()='Sign In']")
-    cookies = (By.XPATH, "//button[text()='Reject']")
+    signInBtn = (By.XPATH, "//a[text()='Oturum Aç']")
+    cookies = (By.XPATH, "//button[text()='Reddet']")
     usernameBox = (By.ID, "id_userLoginId")
     passwordBox = (By.XPATH, "//*[@id='id_password']")
     loginBtn = (By.XPATH, "//button[text()='Oturum Aç']")
     passwordFieldError = (By.XPATH, "//*[@*='password-field+error']")
     wrongPassword = (By.XPATH, "//b[text()='Parola yanlış.']")
+    usernameError = (By.XPATH, "//div[@class='ui-message-contents']")
 
     def click_sign_in_btn(self):
         try:
@@ -43,3 +44,7 @@ class LoginPage(PageBase):
     def check_wrong_password(self):
         self.wait_element_visibility(self.wrongPassword)
         return self.driver.find_element(*self.wrongPassword)
+
+    def check_username_error(self):
+        self.wait_element_visibility(self.usernameError)
+        return self.driver.find_element(*self.usernameError)
