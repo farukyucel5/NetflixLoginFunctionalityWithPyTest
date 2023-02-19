@@ -14,6 +14,8 @@ class LoginPage(PageBase):
     usernameBox = (By.ID, "id_userLoginId")
     passwordBox = (By.XPATH, "//*[@id='id_password']")
     loginBtn = (By.XPATH, "//button[text()='Oturum Aç']")
+    passwordFieldError = (By.XPATH, "//*[@*='password-field+error']")
+    wrongPassword = (By.XPATH, "//b[text()='Parola yanlış.']")
 
     def click_sign_in_btn(self):
         try:
@@ -33,3 +35,11 @@ class LoginPage(PageBase):
     def click_login_btn(self):
         self.wait_element_visibility(self.loginBtn)
         self.driver.find_element(*self.loginBtn).click()
+
+    def check_password_field_error(self):
+        self.wait_element_visibility(self.passwordFieldError)
+        return self.driver.find_element(*self.passwordFieldError)
+
+    def check_wrong_password(self):
+        self.wait_element_visibility(self.wrongPassword)
+        return self.driver.find_element(*self.wrongPassword)
