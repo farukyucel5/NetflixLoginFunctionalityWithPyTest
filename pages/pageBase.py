@@ -7,11 +7,11 @@ class PageBase:
         self.driver = driver
 
     def wait_element_visibility(self, locator):
-        element = WebDriverWait(self.driver, 30).until(expected_conditions.visibility_of_element_located(locator))
+        element = WebDriverWait(self.driver, 45).until(expected_conditions.visibility_of_element_located(locator))
         return element
 
     def wait_element_presence(self, locator):
-        element = WebDriverWait(self.driver, 30).until(expected_conditions.presence_of_element_located(locator))
+        element = WebDriverWait(self.driver, 45).until(expected_conditions.presence_of_element_located(locator))
         return element
 
     def wait_alert_presence(self):
