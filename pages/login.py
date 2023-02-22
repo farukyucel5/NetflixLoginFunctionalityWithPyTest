@@ -17,6 +17,7 @@ class LoginPage(PageBase):
     passwordFieldError = (By.XPATH, "//*[@*='password-field+error']")
     wrongPassword = (By.XPATH, "//b[text()='Parola yanlış.']")
     usernameError = (By.XPATH, "//div[@class='ui-message-contents']")
+    usernameFieldError = (By.XPATH, "//div[@class='inputError']")
 
     def click_sign_in_btn(self):
         try:
@@ -48,3 +49,7 @@ class LoginPage(PageBase):
     def check_username_error(self):
         self.wait_element_visibility(self.usernameError)
         return self.driver.find_element(*self.usernameError)
+
+    def check_username_field_error(self):
+        self.wait_element_visibility(self.usernameFieldError)
+        return self.driver.find_element(*self.usernameFieldError)
