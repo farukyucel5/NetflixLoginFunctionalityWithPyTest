@@ -11,9 +11,9 @@ from pages.login import LoginPage
 @ddt
 class TestLoginFunctionality(unittest.TestCase):
 
-    @data(*ExcelClass.excel_listeler_listesine_cevir("testData/User_info.xlsx","Sheet1"))
+    @data(*ExcelClass.excel_listeler_listesine_cevir("Data/User.xlsx","Sheet1"))
     @unpack
-    def test_negative_login_with_Wrong_User_Information(self, username, password):
+    def test_negative_login_with_Wrong_Email_And_Password(self, username, password):
         if "@gmail" in username and len(password) < 4 and password != "":
             login_page = LoginPage(self.driver)
             self.driver.get("https://www.netflix.com/tr/")
@@ -61,4 +61,3 @@ class TestLoginFunctionality(unittest.TestCase):
             login_page.click_login_btn()
             assert login_page.check_username_field_error().text == "Lütfen geçerli bir telefon numarası veya e‑posta " \
                                                                    "adresi girin."
-

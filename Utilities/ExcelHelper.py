@@ -10,7 +10,7 @@ class ExcelClass:
         sutun_sayisi = sayfa.max_column
         data = []
 
-        for i in range(2, satir_sayisi + 1):
+        for i in range(1, satir_sayisi + 1):
             satir = []
             for j in range(1, sutun_sayisi + 1):
                 if sayfa.cell(i, j).value is None:
