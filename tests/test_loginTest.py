@@ -11,7 +11,7 @@ from pages.login import LoginPage
 @ddt
 class TestLoginFunctionality(unittest.TestCase):
 
-    @data(*ExcelClass.excel_listeler_listesine_cevir("testData/User_info.xlsx", "UserEmailAndPassword"))
+    @data(*ExcelClass.excel_listeler_listesine_cevir("testData/User_info.xlsx","UserEmailAndPassword"))
     @unpack
     def test_negative_login_with_Wrong_User_Information(self, username, password):
         if "@gmail" in username and len(password) < 4 and password != "":
